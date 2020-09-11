@@ -1,1 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookmarklet Collection and Generator</title>
+    <meta name="keywords" content="bookmarklet, hack, javascript, automate, browse, app, bookmark, js, cool, working, free, browser, website"> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+    <meta name="description" content="Bookmarklet Collection and Generator by Galaxy-Coding">    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">
+    <meta name="author" content="Caio Rodrigues.">
+    <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: white;
+      width: 100%;
+      height: 100%;
+      }
+     
+     a {
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: #FF0000;
+  display: inline-block;
+  padding: 15px 30px;
+  border-radius: 40px;
+  color: #fff;
+  font-weight: 700;
+  -webkit-box-shadow: 0px 4px 15px -5px #FF0000;
+          box-shadow: 0px 4px 15px -5px #FF0000;
+} 
+      
+     h1   {
+          color: rgb(78,98,114);
+          font-weight: bold;
+          border-bottom: 1px solid #ddd;
+          text-align: center;
+     }
+     
+     p    {color: darkblue;}
 
+     body {
+      font: 13px/1.4 sans-serif;
+     }
+
+      pre {
+        padding: 0.25em;
+        
+        margin: 0.8em 0;
+        background: rgb(229,237,244);
+        overflow: auto;
+        border-bottom: 0.25em solid white;
+        display: block;
+        width: 40%;
+      }
+
+     #code-textarea {
+       font-size: 14px;
+       line-height: 20px;
+       height: 60px;
+       margin: 4px 0;
+       border: 1px solid #bbb;
+       padding: 4px 7px;
+       width:  725px;
+       height: 250px;        
+     }
+
+     .output-textarea {
+       width: 725px;
+     }
+
+     a.bookmarklet, a.button {
+       /* display: -moz-inline-box; */
+       /* display: inline-block; */
+       padding: 1px 6px;
+       color: #fff;
+       background: #32a0eb;
+       -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+       border-radius: 4px;
+   
+     }
+
+     #nodisc-ul {
+       list-style-type: none;
+     }
+
+     li {
+       display: block;
+       padding: 10px 20px;
+     }
+
+     
+     
+    </style>
+    <script>
+
+     function cleanCode(code){
+       return code.trim()
+     }
+     
+     function generateBookmarklet (){
+       var title = document.getElementById("title-input").value ;
+       var code  = document.getElementById("code-textarea").value;
+       var link  = document.getElementById("bookmarklet-a");
+       var codeOutput = document.getElementById("output-textarea");
+       var htmlOuput  = document.getElementById("htmlOuput-textarea");
+
+       var output = "javascript:" +  encodeURIComponent("(function(){" + cleanCode(code) +  "})();");
+       
+       link.text = title;
+       link.href = output;
+       codeOutput.value = output;
+
+       htmlOuput.value = "<a href=\"" + output + "\">" + title + "</a>"
+       
+     }
+
+     function runCode (){
+       var code  = document.getElementById("code-textarea").value;
+       eval(code);
+     }
+
+     function clearCode(){
+       document.getElementById("title-input").value = "bookmarklet";
+       document.getElementById("code-textarea").value = "";       
+     }
+     
+    </script>
+    
+  </head>
+  <body>
+    <div id="top.div">
+      <h1>Bookmarklet Maker</h1>
+      <a href="https://github.com/caiorss/bookmarklet-maker">Github Repository</a>
+    </div>
+    
+    <div id="main.div">
+      <ul id="nodisc-ul">
+        <li>
+          <label>Title:</label>
+          <input id="title-input" value="bookmarklet"></input>
+        </li>
+        <li> <label>Code</label></li>
+        <li> <textarea id="code-textarea">alert('hello world');</textarea> </li>
+        <li>          
+          <button onclick="generateBookmarklet();">Generate Bookmarklet</button>
+          <button onclick="runCode();">Run Code</button>
+          <button onclick="clearCode();">Clear</button>
+          
+        </li>
+        <li><b>Bookmaklet: </b><a id="bookmarklet-a" class="bookmarklet" href="">bookmarklet</a></li>
+        <li></li>
+        
+        <li><b>Output:</b></li>
+        <li><textarea id="output-textarea" class="output-textarea"></textarea></li>
+
+        <li><b>Html code:</b></li>
+        <li><textarea id="htmlOuput-textarea" class="output-textarea"></textarea></li>
+        
+      </ul>
+    </div>
+
+    <div>
+      <h2>Usage:</h2>
+      <ul>
+        <li>Usage: Paste a code into the form and click on the button generate.</li>
+        <li>To test the bookmarklet click on the blue button.</li>
+        <li>To install the bookmarklet drag and drop it to the bookmars toolbar.</li>        
+      </ul>           
+  </html>
+</index>
