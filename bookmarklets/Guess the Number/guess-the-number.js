@@ -4,7 +4,6 @@ var tries = 1;
 var answer = Math.floor(Math.random() * (upperLimit - lowerLimit + 1)) + lowerLimit;
 var guess = '';
 while (tries > 0) {
-    
 guess = prompt('Try #' + tries + '\nGuess a number between ' + lowerLimit + ' and ' + upperLimit + ':'
 , guess);
 			
